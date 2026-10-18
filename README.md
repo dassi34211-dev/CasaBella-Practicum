@@ -1,161 +1,163 @@
-# CasaBella – Tablecloth Store with an AI Table-Cover Finder
+# CasaBella – חנות מפות שולחן עם עוזרת AI לבחירת מפה
 
-A full-stack online store for tablecloths (browse, cart, checkout, admin product management),
-extended with an **AI-driven finder**: the customer picks a category and sub-category, describes the
-tablecloth she is looking for, and the AI recommends matching products from the store.
-Every request and answer is saved, so each customer has a search history and the admin can review everyone's.
+חנות אינטרנט מלאה למפות שולחן (קטלוג, עגלת קניות, תשלום וניהול מוצרים למנהלת), שהורחבה במערכת **AI למציאת מפה**:
+הלקוחה בוחרת קטגוריה ותת-קטגוריה, מתארת איזו מפה היא מחפשת, וה-AI ממליץ על מפות מתאימות מתוך החנות.
+כל בקשה ותשובה נשמרות, כך שלכל לקוחה יש היסטוריית חיפושים, והמנהלת יכולה לעבור על החיפושים של כולן.
 
-The finder was built as a mini MVP following the *"AI-Driven Learning Platform"* brief, with the same architecture
-(categories → sub-categories → prompt → AI response → history → admin dashboard), adapted to this store's domain:
-instead of generating lessons, the AI recommends products from the catalog.
+המערכת נבנתה כ-MVP קטן לפי מטלת *"AI-Driven Learning Platform"*, באותה ארכיטקטורה
+(קטגוריה ← תת-קטגוריה ← פרומפט ← תשובת AI ← היסטוריה ← דשבורד מנהל), בהתאמה לתחום של החנות:
+במקום שה-AI יכתוב שיעורים, הוא ממליץ על מוצרים מהקטלוג.
 
-## Features
+## צילום מסך
 
-**Store (existing)**
-- Product catalog, shopping cart, checkout and order history
-- Registration / login with JWT
-- Admin: add, edit and delete products, view all orders
+![עוזרת ה-AI למציאת מפה](docs/assistant.png)
 
-**AI table-cover finder (new)**
-- Choose a category and sub-category (e.g. *Table shape › Round*)
-- Describe what you want, e.g. "a round beige tablecloth up to 300 ILS"
-- The AI answers with a short explanation and up to 3 products from the store, with "add to cart"
-- Personal search history for each logged-in user
-- Admin dashboard: all users (name, email, phone) with their prompt history, search and pagination
-- Phone number field in registration
+## יכולות
 
-## Tech stack
+**החנות (קיימת)**
+- קטלוג מוצרים, עגלת קניות, תשלום והיסטוריית הזמנות
+- הרשמה והתחברות עם JWT
+- מנהלת: הוספה, עריכה ומחיקה של מוצרים, וצפייה בכל ההזמנות
 
-| Layer | Technologies |
+**עוזרת ה-AI למציאת מפה (חדש)**
+- בחירת קטגוריה ותת-קטגוריה (למשל *צורת השולחן › עגול*)
+- תיאור חופשי של מה שמחפשים, למשל "מפה עגולה בגווני בז' עד 300 ש"ח"
+- ה-AI מחזיר הסבר קצר ועד 3 מוצרים מהחנות, עם כפתור "הוספה לסל"
+- היסטוריית חיפושים אישית לכל משתמשת מחוברת
+- דשבורד מנהלת: כל המשתמשים (שם, אימייל, טלפון) עם היסטוריית הבקשות שלהם, כולל חיפוש ועימוד
+- שדה טלפון בהרשמה
+
+## טכנולוגיות
+
+| שכבה | טכנולוגיות |
 |---|---|
-| Frontend | React 19, Vite, Redux Toolkit, Material UI, react-hook-form, axios |
-| Backend | Node.js, Express 5, Mongoose, Joi, JWT, bcryptjs, multer |
-| Database | MongoDB (Docker Compose file included) |
-| AI | OpenAI Chat Completions API, or a built-in Mock provider (default) |
+| פרונט | React 19, Vite, Redux Toolkit, Material UI, react-hook-form, axios |
+| בק | Node.js, Express 5, Mongoose, Joi, JWT, bcryptjs, multer |
+| מסד נתונים | MongoDB (כולל קובץ Docker Compose) |
+| AI | OpenAI Chat Completions API, או ספק Mock מובנה (ברירת מחדל) |
 
-## Project structure
+## מבנה הפרויקט
 
 ```
 .
-├── docker-compose.yml          # MongoDB for local development
+├── docker-compose.yml          # MongoDB לפיתוח מקומי
 ├── CasaBella-Server
 │   ├── app.js
-│   ├── config/                 # database connection
-│   ├── middleware/             # auth (JWT), admin check, image upload
-│   ├── models/                 # user, product, order, category, subcategory, prompt
-│   ├── controllers/            # request handling (incl. assistant.controller.js)
-│   ├── routes/                 # route definitions (incl. assistant.route.js)
-│   ├── services/aiService.js   # AI provider interface: Mock + OpenAI
-│   ├── seed/                   # categories, admin user, products
-│   └── uploads/                # product images
+│   ├── config/                 # חיבור למסד הנתונים
+│   ├── middleware/             # אימות (JWT), בדיקת מנהלת, העלאת תמונות
+│   ├── models/                 # משתמשים, מוצרים, הזמנות, קטגוריות, תתי-קטגוריות, פרומפטים
+│   ├── controllers/            # טיפול בבקשות (כולל assistant.controller.js)
+│   ├── routes/                 # הגדרת נתיבים (כולל assistant.route.js)
+│   ├── services/aiService.js   # ממשק ה-AI: Mock + OpenAI
+│   ├── seed/                   # קטגוריות, משתמשת מנהלת, מוצרים
+│   └── uploads/                # תמונות המוצרים
 └── CasaBella-Client
     └── src
-        ├── app/                # Redux store
+        ├── app/                # ה-store של Redux
         ├── components/         # Navbar
-        ├── features/           # products, cart, orders, auth, assistant
-        └── services/           # API calls (auth, assistant)
+        ├── features/           # מוצרים, עגלה, הזמנות, התחברות, עוזרת ה-AI
+        └── services/           # קריאות לשרת (auth, assistant)
 ```
 
-## Getting started
+## הרצה מקומית
 
-**Prerequisites:** Node.js 18+ and MongoDB (local installation, or Docker).
+**דרישות:** Node.js 18 ומעלה, ו-MongoDB (מותקן מקומית או דרך Docker).
 
-### 1. Database
+### 1. מסד נתונים
 ```bash
 docker compose up -d
 ```
-(Skip this if you already run MongoDB locally on port 27017.)
+(אפשר לדלג אם כבר רץ אצלך MongoDB מקומי על פורט 27017.)
 
-### 2. Server
+### 2. שרת
 ```bash
 cd CasaBella-Server
-cp .env.example .env        # Windows PowerShell: copy .env.example .env
+cp .env.example .env        # ב-PowerShell: copy .env.example .env
 npm install
-npm run seed                # categories + admin user + products
+npm run seed                # קטגוריות + משתמשת מנהלת + מוצרים
 npm run dev                 # http://localhost:5000
 ```
 
-### 3. Client
+### 3. לקוח
 ```bash
 cd CasaBella-Client
 npm install
 npm run dev                 # http://localhost:5173
 ```
 
-The client expects the API at `http://localhost:5000`.
+הלקוח מצפה לשרת בכתובת `http://localhost:5000`.
 
-### Admin login
-`npm run seed` creates an admin from `ADMIN_EMAIL` and `ADMIN_PASSWORD` in your `.env`
-(running it again resets that user's password). Log in with those credentials to see
-"Add product", "Orders" and "Customers' searches" in the menu.
+### התחברות כמנהלת
+הפקודה `npm run seed` יוצרת משתמשת מנהלת לפי `ADMIN_EMAIL` ו-`ADMIN_PASSWORD` שבקובץ ה-`.env`
+(הרצה חוזרת מאפסת את הסיסמה של אותה משתמשת). אחרי ההתחברות יופיעו בתפריט "הוספת מוצר", "ניהול הזמנות" ו"חיפושי לקוחות".
 
-### Environment variables (`CasaBella-Server/.env`)
+### משתני סביבה (`CasaBella-Server/.env`)
 
-| Variable | Description |
+| משתנה | תיאור |
 |---|---|
-| `PORT` | Server port (default 5000) |
-| `MONGO_URI` | MongoDB connection string |
-| `JWT_SECRET` | Secret used to sign tokens (required) |
-| `AI_PROVIDER` | `mock` (default) or `openai` |
-| `OPENAI_API_KEY` | Needed only when `AI_PROVIDER=openai` |
-| `OPENAI_MODEL` | Optional, default `gpt-4o-mini` |
-| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Used by `npm run seed` to create the admin |
+| `PORT` | הפורט של השרת (ברירת מחדל 5000) |
+| `MONGO_URI` | כתובת החיבור ל-MongoDB |
+| `JWT_SECRET` | הסוד שבו נחתמים הטוקנים (חובה) |
+| `AI_PROVIDER` | `mock` (ברירת מחדל) או `openai` |
+| `OPENAI_API_KEY` | נדרש רק כש-`AI_PROVIDER=openai` |
+| `OPENAI_MODEL` | אופציונלי, ברירת מחדל `gpt-4o-mini` |
+| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | משמשים את `npm run seed` ליצירת המנהלת |
 
-## AI integration
+## חיבור ה-AI
 
-All AI access goes through one function, `recommendProducts()` in `services/aiService.js`,
-with two interchangeable providers:
+כל הגישה ל-AI עוברת דרך פונקציה אחת, `recommendProducts()` בקובץ `services/aiService.js`,
+עם שני ספקים שאפשר להחליף ביניהם:
 
-- **Mock (default, no API key needed):** keyword matching against product names, with basic Hebrew
-  word-ending handling and a budget filter ("עד 300"). If nothing matches, it returns a few catalog items.
-- **OpenAI:** set `AI_PROVIDER=openai` and `OPENAI_API_KEY`. The server sends the customer's request together with the
-  catalog (id, name, price) and asks for JSON. The answer is validated: only product ids that really exist in the
-  store are kept, the request has a 20 second timeout, and failures return a clean 502 error.
+- **Mock (ברירת מחדל, בלי מפתח):** חיפוש מילות מפתח בשמות המוצרים, עם טיפול בסיסי בסופיות בעברית
+  (למשל "עגולה" מתאים ל"עגול") וסינון לפי תקציב ("עד 300"). אם אין התאמה, מוחזרים כמה מוצרים מהקטלוג.
+- **OpenAI:** מגדירים `AI_PROVIDER=openai` ו-`OPENAI_API_KEY`. השרת שולח את בקשת הלקוחה יחד עם הקטלוג
+  (מזהה, שם ומחיר) ומבקש תשובה בפורמט JSON. התשובה עוברת ולידציה: נשמרים רק מזהי מוצרים שבאמת קיימים בחנות,
+  יש מגבלת זמן של 20 שניות, ותקלה מחזירה שגיאת 502 ברורה.
 
-## API
+## ממשק ה-API
 
-Authentication: JWT sent in the `x-auth-token` header.
+אימות: טוקן JWT נשלח בכותרת `x-auth-token`.
 
-| Method | Route | Access | Description |
+| שיטה | נתיב | הרשאה | תיאור |
 |---|---|---|---|
-| GET | `/api/assistant/categories` | Public | List categories |
-| GET | `/api/assistant/categories/:categoryId/sub-categories` | Public | Sub-categories of a category |
-| POST | `/api/assistant/prompts` | User | Body: `categoryId`, `subCategoryId`, `prompt`. Returns the saved answer with recommended products |
-| GET | `/api/assistant/prompts/me` | User | The logged-in user's history |
-| GET | `/api/assistant/admin/users?page=&limit=&search=` | Admin | Users with their prompts (paginated, searchable) |
-| POST | `/api/users/register`, `/api/users/login` | Public | Registration and login |
-| GET | `/api/products` | Public | Product list (POST / PUT / DELETE are admin only) |
-| — | `/api/orders` | User / Admin | Checkout and orders |
+| GET | `/api/assistant/categories` | פתוח | רשימת קטגוריות |
+| GET | `/api/assistant/categories/:categoryId/sub-categories` | פתוח | תתי-קטגוריות של קטגוריה |
+| POST | `/api/assistant/prompts` | משתמשת מחוברת | גוף הבקשה: `categoryId`, `subCategoryId`, `prompt`. מחזיר את התשובה השמורה עם המוצרים המומלצים |
+| GET | `/api/assistant/prompts/me` | משתמשת מחוברת | ההיסטוריה של המשתמשת המחוברת |
+| GET | `/api/assistant/admin/users?page=&limit=&search=` | מנהלת | משתמשים עם הבקשות שלהם (עימוד וחיפוש) |
+| POST | `/api/users/register`, `/api/users/login` | פתוח | הרשמה והתחברות |
+| GET | `/api/products` | פתוח | רשימת מוצרים (POST / PUT / DELETE למנהלת בלבד) |
+| — | `/api/orders` | משתמשת / מנהלת | תשלום והזמנות |
 
-## Data model
+## מודל הנתונים
 
-| Collection | Fields |
+| אוסף | שדות |
 |---|---|
-| `users` | id, name, email, password (hashed), phone, isAdmin |
+| `users` | id, name, email, password (מוצפן), phone, isAdmin |
 | `categories` | id, name |
 | `sub_categories` | id, name, category_id |
 | `prompts` | id, user_id, category_id, sub_category_id, prompt, response, recommendedProducts, created_at |
 
-Relations use Mongoose references. A sub-category is unique within its category, and the server checks that the
-chosen sub-category belongs to the chosen category.
+הקשרים בין האוספים נעשים עם הפניות של Mongoose. תת-קטגוריה ייחודית בתוך הקטגוריה שלה, והשרת בודק
+שתת-הקטגוריה שנבחרה אכן שייכת לקטגוריה שנבחרה.
 
-## Validation, errors and security
+## ולידציה, שגיאות ואבטחה
 
-- Request bodies are validated with Joi; invalid ids and bad input return `400`, unknown items `404`
-- Prompt length is limited to 5–500 characters (client and server)
-- Errors are returned as `{ "message": ... }`; unexpected server errors do not leak internals
-- Passwords are hashed with bcrypt; the admin list never returns passwords
-- Registration cannot create an admin: the `isAdmin` field is not accepted from the request
-- The admin search escapes user input before building a regular expression
-- No secrets in the repository: `.env` is ignored and `.env.example` documents all variables
+- גוף הבקשות נבדק עם Joi; קלט שגוי ומזהים לא תקינים מחזירים `400`, ופריט שלא נמצא מחזיר `404`
+- אורך הפרומפט מוגבל ל-5 עד 500 תווים (בלקוח ובשרת)
+- שגיאות מוחזרות בפורמט `{ "message": ... }`, ושגיאות שרת לא צפויות לא חושפות פרטים פנימיים
+- סיסמאות מוצפנות עם bcrypt, ורשימת המשתמשים למנהלת לא מחזירה סיסמאות
+- אי אפשר להירשם כמנהלת: השדה `isAdmin` לא מתקבל מהבקשה
+- החיפוש במסך המנהלת מנקה את הקלט לפני בניית ביטוי רגולרי
+- אין סודות במאגר: `.env` לא עולה ל-Git, ו-`.env.example` מתעד את כל המשתנים
 
-## Assumptions
+## הנחות
 
-- The customer description is free text, and categories and sub-categories only give the AI context
-- The existing store user is also the user of the finder (the `users` table gained a `phone` field)
-- Without an OpenAI key the app runs in Mock mode, so it works out of the box
-- Registered users and orders are not part of the repository; the admin and the products are created by the seed scripts
+- תיאור הלקוחה הוא טקסט חופשי, והקטגוריות ותתי-הקטגוריות נותנות ל-AI הקשר בלבד
+- משתמשת החנות הקיימת היא גם המשתמשת של העוזרת (לטבלת `users` נוסף השדה `phone`)
+- בלי מפתח OpenAI האפליקציה רצה במצב Mock, כך שהיא עובדת מיד אחרי ההתקנה
+- משתמשים והזמנות אמיתיים לא נכללים במאגר; המנהלת והמוצרים נוצרים על ידי סקריפטי ה-seed
 
-## Not included
+## לא נכלל
 
-Automated tests, Swagger / OpenAPI documentation, TypeScript and a deployed demo.
+בדיקות אוטומטיות, תיעוד Swagger / OpenAPI, TypeScript והעלאה לאינטרנט.
