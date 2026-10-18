@@ -119,7 +119,9 @@ class OpenAIProvider {
         }
 
         if (!response.ok) {
-            console.error('OpenAI returned status', response.status);
+            // מדפיסים גם את הודעת השגיאה של OpenAI כדי להבין מה השתבש (מפתח, מכסה, מודל...)
+            const details = await response.text().catch(() => '');
+            console.error('OpenAI returned status', response.status, details.slice(0, 300));
             throw aiError();
         }
 
