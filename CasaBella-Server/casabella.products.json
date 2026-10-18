@@ -1,0 +1,291 @@
+[{
+  "_id": {
+    "$oid": "69b0673078ca7af27440bd4a"
+  },
+  "name": "ונציה כסף מרובע",
+  "price": 200,
+  "image": "uploads\\1773168432460.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-10T18:47:12.475Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-10T19:43:36.372Z"
+  },
+  "__v": 0,
+  "description": ""
+},
+{
+  "_id": {
+    "$oid": "69b067e8736cfa8a0768c29d"
+  },
+  "name": "לינן קפה מרובע",
+  "price": 250,
+  "image": "uploads\\1773168616016.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-10T18:50:16.064Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-10T18:50:16.064Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b067fe736cfa8a0768c29f"
+  },
+  "name": "מפה אורגנזה ובסיס אבן עגול",
+  "price": 300,
+  "image": "uploads\\1773168638343.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-10T18:50:38.357Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-10T18:50:38.357Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b0681d736cfa8a0768c2a3"
+  },
+  "name": "מפה גבעולים מוקה עגול",
+  "price": 300,
+  "image": "uploads\\1773168669806.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-10T18:51:09.811Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-10T18:51:09.811Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b0682d736cfa8a0768c2a5"
+  },
+  "name": "מפה ליה ירוק עגול",
+  "price": 180,
+  "image": "uploads\\1773171802711.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-10T18:51:25.168Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-10T19:43:22.730Z"
+  },
+  "__v": 0,
+  "description": ""
+},
+{
+  "_id": {
+    "$oid": "69b06dd53e3f0ad015f9bebb"
+  },
+  "name": "מפה הרמוני קפה מרובע",
+  "price": 280,
+  "image": "uploads\\1773170133057.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-10T19:15:33.103Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-10T19:15:33.103Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b06e2a3e3f0ad015f9bebd"
+  },
+  "name": "מפה ליה ורוד עגול",
+  "price": 400,
+  "image": "uploads\\1773170218254.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-10T19:16:58.262Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-10T19:16:58.262Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b152c779a46722426ef976"
+  },
+  "name": "מפה אורנזה ובסיס קפה",
+  "price": 129,
+  "image": "uploads\\1773228743180.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:32:23.210Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:32:23.210Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b152db79a46722426ef978"
+  },
+  "name": "מפה ליה קרם עגול",
+  "price": 250,
+  "image": "uploads\\1773228763860.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:32:43.866Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:32:43.866Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b152ff79a46722426ef97a"
+  },
+  "name": "מפה מרסיי לבן עגול",
+  "price": 270,
+  "image": "uploads\\1773228799526.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:33:19.532Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:33:19.532Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b1531079a46722426ef97c"
+  },
+  "name": "מפה פרחוני סאמר עגול",
+  "price": 199,
+  "image": "uploads\\1773228816103.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:33:36.108Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:33:36.108Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b1532d79a46722426ef97e"
+  },
+  "name": "מפה קטיפה שחורה מאוייר עגול",
+  "price": 400,
+  "image": "uploads\\1773228845491.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:34:05.495Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:34:05.495Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b1533e79a46722426ef980"
+  },
+  "name": "מפה שלי גדול",
+  "price": 420,
+  "image": "uploads\\1773228862698.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:34:22.712Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:34:22.712Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b1534d79a46722426ef982"
+  },
+  "name": "מפה שלכת לבן עגול",
+  "price": 360,
+  "image": "uploads\\1773228877717.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:34:37.722Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:34:37.722Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b1536479a46722426ef984"
+  },
+  "name": "מפה תחרה פרחים זהב",
+  "price": 460,
+  "image": "uploads\\1773228900740.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:35:00.746Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:35:00.746Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b1537379a46722426ef986"
+  },
+  "name": "קנבס פרחים סגול פחם",
+  "price": 300,
+  "image": "uploads\\1773228915299.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:35:15.303Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:35:15.303Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69b1538079a46722426ef988"
+  },
+  "name": "רקמת עלים זהב",
+  "price": 230,
+  "image": "uploads\\1773228928250.webp",
+  "shape": "מלבן",
+  "inStock": true,
+  "createdAt": {
+    "$date": "2026-03-11T11:35:28.256Z"
+  },
+  "updatedAt": {
+    "$date": "2026-03-11T11:35:28.256Z"
+  },
+  "__v": 0
+}]
