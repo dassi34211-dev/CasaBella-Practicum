@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>בדיקת העלאה לשרת</title>
+    <style>
+        body { font-family: Arial; padding: 30px; background: #f4f4f4; }
+        .box { background: white; padding: 20px; border-radius: 10px; width: 350px; }
+        input, button { margin-bottom: 15px; padding: 10px; width: 90%; display: block; }
+        button { background: #28a745; color: white; border: none; cursor: pointer; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>העלאת מפה לשרת</h2>
+        <form id="myForm">
+            <input type="text" id="name" placeholder="שם המפה" required>
+            <input type="number" id="price" placeholder="מחיר" required>
+            <input type="text" id="description" placeholder="תיאור" required>
+            <input type="file" id="image" required>
+            <hr>
+            <input type="text" id="token" placeholder="הדביקי כאן את הטוקן מה-Login" required>
+            <button type="submit">שלחי לשרת!</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', async (e) => {
+            e.preventDefault(); // מונע רענון של העמוד
+            
+            // אורזים את כל הנתונים והתמונה לחבילה אחת
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('price', document.getElementById('price').value);
+            formData.append('description', document.getElementById('description').value);
+            formData.append('image', document.getElementById('image').files[0]); // התמונה עצמה!
+
+            const token = document.getElementById('token').value;
+
+            try {
+                // שולחים לשרת שלך
+                const res = await fetch('http://localhost:5000/api/products', {
+                    method: 'POST',
+                    headers: { 'x-auth-token': token },
+                    body: formData
+                });
+                
+                const data = await res.json();
+                
+                if(res.ok) {
+                    alert('יששש! התמונה עלתה בהצלחה! לכי לבדוק בתיקיית uploads ב-VS Code.');
+                } else {
+                    alert('השרת אומר: ' + data.message);
+                }
+            } catch (err) {
+                alert('שגיאת תקשורת. ודאי שהשרת דולק בטרמינל.');
+            }
+        });
+    </script>
+</body>
+</html>
